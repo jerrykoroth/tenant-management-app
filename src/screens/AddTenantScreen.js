@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, Alert } from 'react-native';
-import { addTenant } from '../services/tenantService';
+import tenantService from '../services/tenantService';
 
 const AddTenantScreen = () => {
   const [name, setName] = useState('');
@@ -9,7 +9,7 @@ const AddTenantScreen = () => {
 
   const handleSubmit = async () => {
     try {
-      await addTenant({ name, contact, roomId });
+      await tenantService.addTenant({ name, contact, roomId });
       Alert.alert("Tenant added successfully");
       setName('');
       setContact('');
